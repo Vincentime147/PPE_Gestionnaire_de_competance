@@ -13,19 +13,15 @@
     <br>
     <br>
     <?php
-    $servername = "localhost";
-    $username = "user";
-    $password = "123+aze";
-    $database = "gestionnaire_de_competence";
-
-    try{
-        $connection = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-        echo "Database connected - YAY";
-        echo "<br><br> Good work Asuka";
-    } catch (PDOException $exception) {
-        echo "Database not connected. " , $exception;
-    }
+    use App\utils\SingletonBDD;
+    use App\models\DAOEmployer;
+require_once '../vendor/autoload.php';
     
+     
+    $cnx = SingletonBDD::getInstance()->cnx;
+    $DAOEmployer = new DAOEmployer($cnx);
+    $employer1= $DAOEmployer->findById(1);
+    var_dump($employer1);
 
     ?>
 </body>
