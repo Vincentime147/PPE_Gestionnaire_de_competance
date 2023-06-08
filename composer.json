@@ -1,0 +1,16 @@
+{
+    "name": "borda/ppe_gestionnaire_de_competance",
+    "description": "PPE web",
+    "autoload": {
+        "psr-4": {
+            "App\\":"app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vincentime147",
+            "email": "bordarierkonigtheo@gmail.com"
+        }
+    ],
+    "require": {}
+}
