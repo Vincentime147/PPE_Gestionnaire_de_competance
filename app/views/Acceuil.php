@@ -11,6 +11,8 @@
 
     <p>Bienvenue sur la page d'acceuil</p>
     <br>
+    <a href="/test">page de test</a>
+    <a href="/compRecap">page de test</a>
     <br>
     <?php
     use App\utils\SingletonBDD;

@@ -32,9 +32,12 @@ switch ($control) {
     }
     case "test":
         //URL login
-        loginRoutes($fragments);
+        testRoutes_get($fragments);
         break;
-    case "pompier" :
+    case "compRecap" :
+        //URL login
+        compRecapRoutes_get($fragments);
+        break;
     {
         //echo "Gestion des routes pour pompier <hr>";
         //calling function to prevend all hard code here
@@ -80,6 +83,13 @@ function loginVerifRoutes($fragments){
     call_user_func_array([new \fireman\controllers\DefaultController(), "login_verif"], $fragments);
 }
 
+function compRecapRoutes_get($fragments){
+    call_user_func_array([new \App\controllers\DefaultController(), "compRecap"], $fragments);
+}
+function testRoutes_get($fragments)
+{
+    call_user_func_array([new \App\controllers\DefaultController(), "testUserComp"], $fragments);
+}
 
 function defaultRoutes_get($fragments)
 {

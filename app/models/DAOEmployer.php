@@ -26,7 +26,48 @@ class DAOEmployer
         }
         return null;
     }
+    public function findAll($offset = 0, $limit = 60) : Array {
+        $desEmployer = [];
+        $requete = $this->cnx->prepare("SELECT * FROM employer LIMIT :limite OFFSET :offsets");
+        $requete->bindParam("limite",$limit ,\PDO::PARAM_INT);
+        $requete->bindParam("offsets",$offset, \PDO::PARAM_INT);   
+        $requete->execute();
+        $requete = $requete->fetchAll();
+
+        foreach ($requete as $unEmployer){
+            $employer = new employer;
+            $employer->setId($unEmployer["idEmployer"]);
+            $employer->setNom($unEmployer["Nom"]);
+            $employer->setPrenom($unEmployer["Prenom"]);
+            $employer->setPost($unEmployer["Poste"]);
+
+            $desEmployer[$unEmployer["idEmployer"]] = $employer;
+        }
+
+
+        return $desEmployer;
+        
+    }
+    public function countNBComp(int $idEmployer){
+        $requete = $this->cnx->prepare("SELECT COUNT(idEmployer) FROM competanceemployer WHERE idEmployer LIKE :idEmployer");
+        $requete->bindParam(':idEmployer', $idEmployer);    
+        $requete->execute();
+        $resultat = $requete->fetch();
+        return $resultat;
+        /*
+        if ($resultat){
+            $employer = new employer;
+            $employer->setId($resultat["idEmployer"]);
+            $employer->setNom($resultat["Nom"]);
+            $employer->setPrenom($resultat["Prenom"]);
+            $employer->setPost($resultat["Poste"]);
+            return $employer;
+        }
+        return null;*/
+    }
 }
+
+
 
 
 /*

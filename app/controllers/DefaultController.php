@@ -20,6 +20,13 @@ class DefaultController extends BaseController{
         echo Renderer::render("Acceuil.php");
         
     }
+    public function testUserComp(){
+
+        echo Renderer::render("UtilisateurComp.php");
+    }
+    public function compRecap(){
+        echo Renderer::render("CompetanceOnly.php");
+    }
     /*
     public function login(){
         $ff = New Auth();
